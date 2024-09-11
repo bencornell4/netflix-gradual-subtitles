@@ -291,7 +291,7 @@ class TextSubtitle extends SubtitleBase {
       const tspan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
       tspan.setAttributeNS(null, 'x', this.extentWidth * 0.5);
       if (i > 0) tspan.setAttributeNS(null, 'dy', text.style.fontSize);
-      tspan.textContent = line;
+      tspan.textContent = line.toUpperCase();
       text.appendChild(tspan);
     });
 
@@ -1066,6 +1066,8 @@ class RendererLoop {
       renderedElems.forEach(elem => this.subSvg.appendChild(elem));
     }
   }
+
+
 }
 
 window.addEventListener('resize', evt => {
@@ -1360,3 +1362,9 @@ window.addEventListener('keydown', (event) => {
     primary.style.visibility = secondary.style.visibility = (visible) ? 'hidden' : 'visible';
   }
 }, true);
+
+function printSubtitles() {
+  gSubtitles.forEach(subtitle => {
+    console.log(subtitle);
+  });
+}
